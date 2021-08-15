@@ -17,7 +17,7 @@ timeset = np.zeros(18) #milisecond time that keyboard pressed
 pressset = [[] for i in range(18)] # save all data of timeset
 
 for i, j in enumerate(info.play_data): # get infornation about key pressing time
-    if j(j.time_delta == 0 and j.keys == 0) or i < 3 : #there are dummy replay whose timing is zero. We should remove this. and, I deleted first three data because thet data does not indicate real press time.
+    if (j.time_delta == 0 and j.keys == 0) or i < 3 : #there are dummy replay whose timing is zero. We should remove this. and, I deleted first three data because thet data does not indicate real press time.
         continue
     r_onset=key_finder.findkey(j.keys) #infornation about "Present" key pressing
     timeset += onset*j.time_delta
