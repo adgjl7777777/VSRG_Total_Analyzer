@@ -9,8 +9,9 @@ import osrparse
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import colors
-import os
-import glob
+from os import mkdir
+from os.path import isdir
+from glob import glob
 
 def findkey(x = 0):
     keyset = [0 for i in range(18)]
@@ -83,10 +84,10 @@ def presssaver(mapdir):
     plt.tight_layout()
     plt.savefig("graph results/"+mapdir[10:])
     plt.clf()
-if not os.path.isdir("osr files"):
-    os.mkdir("osr files")
-if not os.path.isdir("graph results"):
-    os.mkdir("graph results")
-all_dir = glob.glob('osr files/*.osr')  
+if not isdir("osr files"):
+    mkdir("osr files")
+if not isdir("graph results"):
+    mkdir("graph results")
+all_dir = glob('osr files/*.osr')  
 for i in all_dir:
     presssaver(i[:-4])
